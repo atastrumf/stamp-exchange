@@ -1,20 +1,31 @@
 <!DOCTYPE html>
 <html>
-<?php include 'core/init.php'; ?>
-<?php include 'head.php'; ?>
+<?php 
+	include 'core/init.php';
+?>
 <body>
 	
 	<div id="Holder">
 		<?php include 'header.php'; ?>
 		<div id="Content">
-			<div id="PageHeading">
+			
+			<div id="ContentLeft">
+				<div id="PageHeading">
 				
 				<h1>Moje znamke</h1>
 
 			</div>
-			<div id="ContentLeft"></div>
+			</div>
 			<div id="ContentRight">
-				<?php include 'widgets/loginwidget.php' ?>
+				<?php
+					if (logged_in() === true) {
+
+						include 'widgets/loggedin.php';
+					} else {
+
+						include 'widgets/login.php';
+					}
+				?>
 			</div>
 
 		</div>
