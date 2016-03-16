@@ -1,5 +1,4 @@
 <head>
-	
 	<link rel="stylesheet" href="CSS/layout.css" type="text/css">
 	<link rel="stylesheet" href="CSS/menu.css" type="text/css">
 
