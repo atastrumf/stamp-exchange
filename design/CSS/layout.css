@@ -8,15 +8,11 @@ body {
 	height: auto;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 25px;
-	margin-bottom: 25px;
 }
 
 header {
-	margin: 0 auto;
 	height: 60px;
 	background-color: #efc74b;
-	text-align: center;
 }
 
 #Content {
@@ -27,7 +23,6 @@ header {
 
 #PageHeading {
 	height: auto;
-	padding: 11px;
 }
 
 #ContentLeft {
@@ -41,6 +36,8 @@ header {
 #ContentRight {
 	width: 280px;
 	float: right;
+	padding-top: 11px;
+	padding-left: 11px;
 }
 
 #Footer {
