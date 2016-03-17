@@ -1,4 +1,4 @@
 <?php 
-	mysql_connect('localhost', 'root', 'password');
-	mysql_select_db('znamke_db');
+	$con = mysqli_connect('localhost', 'root', 'password');
+	mysqli_select_db($con, 'znamke_db');
 ?>
