@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html>
+<head>
+	<meta charset='UTF-8'> 
+</head>
 <?php 
 	include 'core/init.php';
 	include 'core/database/connect.php';
@@ -34,6 +37,10 @@
 				if (isset($_POST["izbiraLeta"])) {
 					$izbiraLeta=$_POST['izbiraLeta'];
 				
+					mysqli_query($con,"SET NAMES utf8");
+					mysqli_query($con,"SET CHARACTER SET utf8");
+					mysqli_query($con,"SET COLLATION_CONNECTION='utf8_general_ci'");
+				
 					$query = "SELECT * FROM znamka WHERE YEAR(STR_TO_DATE(datumIzdaje, '%d.%m.%Y')) = ".$izbiraLeta."";
 					$result = $con->query($query);
 					
@@ -47,9 +54,17 @@
 								$i = 0;
 							}
 								
-							echo '<td><img src="data:image/jpeg;base64,'.base64_encode( $row['slika'] ).'"/></td>';
+							echo "<td>
+							<a href='znamka.php?ID_slika=" . $row['ID_slika'] . "'>
+							<img src='data:image/jpeg;base64,".base64_encode( $row['slika'] )."'/>
+							<figcaption>".$row['naziv']."</figcaption>
+							</a>
+							</td>";
 							$i++;
 						}
+						
+						$result->free();
+						$con->close();
 						echo "</tr></table>";
 					}
 				}
