@@ -7,6 +7,7 @@
 	include 'core/init.php';
 	include 'core/database/connect.php';
 ?>
+
 <body>
 	
 	<div id="Holder">
@@ -38,7 +39,7 @@
 					<?php 
 					
 					if (isset($row['slika']) && $row['slika'] != NULL)
-						echo "<td rowspan='14'><img src='data:image/jpeg;base64,".base64_encode( $row['slika'] )."'/></td>";
+						echo "<td rowspan='14' id='znamkaPodrobno'><img src='data:image/jpeg;base64,".base64_encode( $row['slika'] )."'/></td>";
 					
 					$polja = array($row["naziv"], $row["datumIzdaje"], $row["risba"], $row["oblikovanje"], $row["motiv"], $row["tisk"], $row["izvedba"], $row["pola"], $row["papir"], $row["velikost"], $row["zobci"], $row["zobcanje"], $row["foto"], $row["opomba"]);
 					$poljaText = array("Naziv", "Datum izdaje", "Risba", "Oblikovanje", "Motiv", "Tisk", "Izvedba", "Pola", "Papir", "Velikost", "Zobci", "Zobcanje", "Foto", "Opomba");
