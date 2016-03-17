@@ -143,7 +143,7 @@
 								$i = 0;
 							}
 								
-							echo "<td>
+							echo "<td id='znamkaSeznam'>
 							<a href='znamka.php?ID_slika=" . $row['ID_slika'] . "'>
 							<img src='data:image/jpeg;base64,".base64_encode( $row['slika'] )."'/>
 							<figcaption>".$row['naziv']."</figcaption>
