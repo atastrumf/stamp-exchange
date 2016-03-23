@@ -93,9 +93,11 @@
 		$username = mysqli_real_escape_string(mysqli_connect('localhost', 'root', 'password', 'znamke_db'), $username);
 
 		$query = "SELECT `uporabnikID` FROM `uporabniki` WHERE `uporabnisko_ime` = '$username'";
-		$result = mysqli_query(mysqli_connect('localhost', 'root', 'password', 'znamke_db'), $query);
+		$result = mysqli_fetch_assoc(mysqli_query(mysqli_connect('localhost', 'root', 'password', 'znamke_db'), $query));
 
-		return $result->fetch_assoc();
+		$userID = $result['uporabnikID'];
+
+		return $userID;
 	}
 
 	function login($username, $password) {
