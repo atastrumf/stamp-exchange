@@ -25,12 +25,40 @@ header {
 	height: auto;
 }
 
-#ContentLeft {
-	width: 680px;
-	float: left;
+#Letnice {
+
+	background-color: #c0c0c0;
+	height: 40px;
+
+	padding: 20px;
+
+}
+
+#Letnice a {
+
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	text-decoration: none;
+	color: white;
+	display: inline-table;
+	width: 60px;
+}
+
+.letoZnamke {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 	padding-top: 11px;
 	padding-left: 11px;
+	font-size: 24px;
+}
 
+.znamke {
+
+	padding-top: 11px;
+	padding-left: 11px;
+}
+
+#ContentLeft {
+	max-width: 970px;
+	float: left;
 }
 
 #ContentRight {
@@ -70,6 +98,21 @@ a {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 	font-weight: lighter;
 	color: #555;
+}
+
+a.back-to-top {
+	display: none;
+	width: 60px;
+	height: 60px;
+	text-indent: -9999px;
+	position: fixed;
+	z-index: 999;
+	right: 20px;
+	bottom: 20px;
+	background: #efc74b url("arrow-up-01-128.png") no-repeat center 23%;
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	border-radius: 30px;
 }
 
 .StyleTxtField {
