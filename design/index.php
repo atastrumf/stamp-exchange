@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset='UTF-8'> 
-	<meta name="google-signin-client_id" content="znamke-1253">	
-</head>
-<?php 
+<?php
 	include 'core/init.php';
-	include 'core/database/connect.php';
+	include 'head.php';
+	$con = mysqli_connect('localhost', 'root', 'password', 'znamke_db');
 ?>
 <body>
 	<div id="fb-root"></div>
@@ -132,7 +129,7 @@
 				
 					$query = "SELECT * FROM znamka WHERE YEAR(STR_TO_DATE(datumIzdaje, '%d.%m.%Y')) = ".$izbiraLeta."";
 					$result = $con->query($query);
-					
+
 					if ($result->num_rows > 0) {
 						echo "<table><tr>";
 						$i = 5;
