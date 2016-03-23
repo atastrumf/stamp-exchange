@@ -1,5 +1,8 @@
-<?php 
+<?php
+
 	include 'core/init.php';
+	$con = mysqli_connect('localhost', 'root', 'password', 'znamke_db');
+	
 	if (empty($_POST) === false) {
 	
 		$required_fields = array('username', 'password', 'confirmpassword', 'email');
