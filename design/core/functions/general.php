@@ -1,12 +1,7 @@
-<?php 
-	
+<?php
+
 	function spucaj_array(&$item) {
-		$item = mysql_real_escape_string($item);
-	}
-
-	function spucaj($data) {
-
-		return mysql_real_escape_string($data);
+		$item = mysqli_real_escape_string(mysqli_connect('localhost', 'root', 'password', 'znamke_db'), $item);
 	}
 
 	function output_errors($errors) {
