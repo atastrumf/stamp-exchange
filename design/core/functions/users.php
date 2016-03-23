@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 	function register_user($register_data) {
 
@@ -8,7 +8,7 @@
 		$fields = '`' . implode('`, `', array_keys($register_data)) . '`';
 		$data = '\'' . implode('\', \'', $register_data) . '\'';
 
-		mysql_query("INSERT INTO `uporabniki` ($fields) VALUES ($data)");
+		mysqli_query(mysqli_connect('localhost', 'root', 'password', 'znamke_db'), "INSERT INTO `uporabniki` ($fields) VALUES ($data)");
 	}
 
 	function user_data($user_id) {
@@ -22,7 +22,12 @@
 			unset($func_get_args[0]);
 
 			$fields = '`' . implode('`, `', $func_get_args) . '`';
-			$data = mysql_fetch_assoc(mysql_query("SELECT $fields FROM `uporabniki` WHERE `uporabnikID` = $user_id"));
+
+			$query = "SELECT $fields FROM `uporabniki` WHERE `uporabnikID` = $user_id";
+			$result = mysqli_query(mysqli_connect('localhost', 'root', 'password', 'znamke_db'), $query);
+			$data = mysqli_fetch_assoc($result);
+
+			echo mysqli_fetch_assoc($result);
 
 			return $data;
 		}
@@ -33,32 +38,84 @@
 	}
 
 	function user_exists($username) {
-		$username = spucaj($username);
-		return (mysql_result(mysql_query("SELECT COUNT(`uporabnikID`) FROM `uporabniki` WHERE `uporabnisko_ime` = '$username'"), 0) == 1) ? true : false;
+
+		$username = mysqli_real_escape_string(mysqli_connect('localhost', 'root', 'password', 'znamke_db'), $username);
+
+		$query = "SELECT * FROM `uporabniki` WHERE `uporabnisko_ime` = '$username'";
+		$result = mysqli_query(mysqli_connect('localhost', 'root', 'password', 'znamke_db'), $query);
+
+		if($result->num_rows)
+		{
+			return true;
+		} 
+		else 
+		{
+			return false;
+		}
 	}
 
 	function email_exists($email) {
-		$email = spucaj($email);
-		return (mysql_result(mysql_query("SELECT COUNT(`uporabnikID`) FROM `uporabniki` WHERE `email` = '$email'"), 0) == 1) ? true : false;
+
+		$email = mysqli_real_escape_string(mysqli_connect('localhost', 'root', 'password', 'znamke_db'), $email);
+
+		$query = "SELECT * FROM `uporabniki` WHERE `email` = '$email'";
+		$result = mysqli_query(mysqli_connect('localhost', 'root', 'password', 'znamke_db'), $query);
+
+		if($result->num_rows)
+		{
+			return true;
+		} 
+		else 
+		{
+			return false;
+		}
 	}
 
 	function user_active($username) {
-		$username = spucaj($username);
-		return (mysql_result(mysql_query("SELECT COUNT(`uporabnikID`) FROM `uporabniki` WHERE `uporabnisko_ime` = '$username' AND `aktiviran` = 1"), 0) == 1) ? true : false;
+
+		$username = mysqli_real_escape_string(mysqli_connect('localhost', 'root', 'password', 'znamke_db'), $username);
+
+		$query = "SELECT * FROM `uporabniki` WHERE `uporabnisko_ime` = '$username' AND `aktiviran` = 1";
+		$result = mysqli_query(mysqli_connect('localhost', 'root', 'password', 'znamke_db'), $query);
+
+		if($result->num_rows)
+		{
+			return true;
+		} 
+		else 
+		{
+			return false;
+		}
 	}
 
 	function user_id_from_username($username) {
-		$username = spucaj($username);
-		return mysql_result(mysql_query("SELECT `uporabnikID` FROM `uporabniki` WHERE `uporabnisko_ime` = '$username'"), 0, 'uporabnikID');
+
+		$username = mysqli_real_escape_string(mysqli_connect('localhost', 'root', 'password', 'znamke_db'), $username);
+
+		$query = "SELECT `uporabnikID` FROM `uporabniki` WHERE `uporabnisko_ime` = '$username'";
+		$result = mysqli_query(mysqli_connect('localhost', 'root', 'password', 'znamke_db'), $query);
+
+		return $result->fetch_assoc();
 	}
 
 	function login($username, $password) {
 		$user_id = user_id_from_username($username);
 
-		$username = spucaj($username);
+		$username = mysqli_real_escape_string(mysqli_connect('localhost', 'root', 'password', 'znamke_db'), $username);
+
 		$password = md5($password);
 
-		return (mysql_result(mysql_query("SELECT COUNT(`uporabnikID`) FROM `uporabniki` WHERE `uporabnisko_ime` = '$username' AND `geslo` = '$password'"), 0) == 1) ? $user_id : false;
+		$query = "SELECT * FROM `uporabniki` WHERE `uporabnisko_ime` = '$username' AND `geslo` = '$password'";
+		$result = mysqli_query(mysqli_connect('localhost', 'root', 'password', 'znamke_db'), $query);
+
+		if($result->num_rows) 
+		{
+			return $user_id;
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 ?>
