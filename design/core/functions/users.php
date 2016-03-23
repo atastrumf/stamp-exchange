@@ -11,6 +11,26 @@
 		mysqli_query(mysqli_connect('localhost', 'root', 'password', 'znamke_db'), "INSERT INTO `uporabniki` ($fields) VALUES ($data)");
 	}
 
+	function update_user($update_data) {
+
+		array_walk($update_data, 'spucaj_array');
+
+		mysqli_query(mysqli_connect('localhost', 'root', 'password', 'znamke_db'), "UPDATE `uporabniki` SET "
+			. "email='" . $update_data['email'] . "', "
+			. "ime='" . $update_data['ime'] . "', "
+			. "priimek='" . $update_data['priimek'] . "', "
+			. "naslov='" . $update_data['naslov'] . "', "
+			. "posta='" . $update_data['posta'] . "', "
+			. "telefonska='" . $update_data['telefonska'] . "', "
+			. "spol='" . $update_data['spol'] . "', "
+			. "starost='" . $update_data['starost'] . "'"
+			. "WHERE uporabnisko_ime='" . $update_data['uporabnisko_ime'] . "'");
+	}
+
+	function common_user_data($session_user_id) {
+		return user_data($session_user_id, 'uporabnikID', 'uporabnisko_ime', 'geslo', 'email', 'ime', 'priimek', 'naslov', 'posta', 'telefonska', 'spol', 'starost');
+	}
+
 	function user_data($user_id) {
 		$data = array();
 		$user_id = (int)$user_id;
