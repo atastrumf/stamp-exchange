@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <?php
-	include 'core/init.php';
-	include 'head.php';
-	$con = mysqli_connect('localhost', 'root', 'password', 'znamke_db');
+  include 'core/init.php';
+  include 'head.php';
+  $con = mysqli_connect('localhost', 'root', 'password', 'znamke_db');
 ?>
 <body>
-	<div id="fb-root"></div>
+  <div id="fb-root"></div>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -95,81 +95,107 @@
     });
   }
 </script>
-	<div id="Holder">
-		<?php include 'header.php'; ?>
-		<div id="Content">
-			
-			<div id="ContentLeft">
-				<div id="PageHeading">
-				
-				<h1>Moje znamke</h1>			
+  <div id="Holder">
+    <?php include 'header.php'; ?>
+    <div id="Content">
+      
+      <div id="ContentLeft">
+        <div id="Letnice">
+        
+             <?php
+                  for ($i = 1991; $i < 2017; $i++) {  
+                    echo "<a class='leto' href='#" . $i . "'>" . $i . "</a>";
+                  }
+             ?>
 
-				</div>				
-					
-				<tr><td class='meni'>
-				<form method='POST' action='index.php' name='leto' id='leto'>
-				<br><select 'width='200px' form='leto' name='izbiraLeta'>";
-				<?php
-				for ($i = 1991; $i < 2017; $i++) {	
-					if (isset($_POST["izbiraLeta"]) && $i == $_POST["izbiraLeta"])					
-						echo "<option value=".$i." selected='selected'>".$i."</option>";
-					else
-						echo "<option value=".$i.">".$i."</option>";
-				}
-				?>
-				<input id='button' type='submit' name='submit' value='Izberi'></select></td></tr><br>
-				
-				<?php
-				if (isset($_POST["izbiraLeta"])) {
-					$izbiraLeta=$_POST['izbiraLeta'];
-				
-					mysqli_query($con,"SET NAMES utf8");
-					mysqli_query($con,"SET CHARACTER SET utf8");
-					mysqli_query($con,"SET COLLATION_CONNECTION='utf8_general_ci'");
-				
-					$query = "SELECT * FROM znamka WHERE YEAR(STR_TO_DATE(datumIzdaje, '%d.%m.%Y')) = ".$izbiraLeta."";
-					$result = $con->query($query);
+        </div>
 
-					if ($result->num_rows > 0) {
-						echo "<table><tr>";
-						$i = 5;
-						while($row = $result->fetch_assoc()) {
-							
-							if ($i==5) {
-								echo "</tr><tr>";
-								$i = 0;
-							}
-								
-							echo "<td id='znamkaSeznam'>
-							<a href='znamka.php?ID_slika=" . $row['ID_slika'] . "'>
-							<img class='znamka' src='data:image/jpeg;base64,".base64_encode( $row['slika'] )."'/>
-							<figcaption>".$row['naziv']."</figcaption>
-							</a>
-							</td>";
-							$i++;
-						}
-						
-						$result->free();
-						$con->close();
-						echo "</tr></table>";
-					}
-				}
-				?>
-			</div>
-			<div id="ContentRight">
-				<?php
-					if (logged_in() === true) {
+        <script type="text/javascript">
+          
+          $(".leto").on("click", function( e ) {
+    
+              e.preventDefault();
 
-						include 'widgets/loggedin.php';
-					} else {
+              $("html, body").animate({ 
+                  scrollTop: $( $(this).attr('href') ).offset().top 
+              }, 800);
+              
+          });
 
-						include 'widgets/login.php';
-					}					
-				?>
-			</div>
+        </script>
 
-		</div>
-	</div>
+          <?php
+
+          mysqli_query($con,"SET NAMES utf8");
+          mysqli_query($con,"SET CHARACTER SET utf8");
+          mysqli_query($con,"SET COLLATION_CONNECTION='utf8_general_ci'");
+
+
+          for ($i = 1991; $i < 2017; $i++) {  
+            
+            echo "<div class='letoZnamke' id='" . $i . "'<h2>" . $i . "</h2><br><a href='#' class='back-to-top'>Na vrh</a><hr><br></div><div class='znamke'>";
+          
+            $query = "SELECT * FROM znamka WHERE YEAR(STR_TO_DATE(datumIzdaje, '%d.%m.%Y')) = ".$i."";
+            $result = $con->query($query);
+
+            echo "<table><tr>";
+            $j = 5;
+            while($row = $result->fetch_assoc()) {
+              
+              if ($j==5) {
+                echo "</tr><tr>";
+                $j = 0;
+              }
+                
+              echo "<td id='znamkaSeznam'>
+              <a href='znamka.php?ID_slika=" . $row['ID_slika'] . "'>
+              <img class='znamka' src='data:image/jpeg;base64,".base64_encode( $row['slika'] )."'/>
+              <figcaption>".$row['naziv']."</figcaption>
+              </a>
+              </td>";
+              $j++;
+            }
+
+            echo "</tr></table></div>";
+          }
+          ?>
+
+      </div>
+      <div id="ContentRight">
+        <?php
+          if (logged_in() === true) {
+
+            include 'widgets/loggedin.php';
+          } else {
+
+            include 'widgets/login.php';
+          }         
+        ?>
+      </div>
+
+    </div>
+  </div>
+
+<script type="text/javascript">
+  $('body').prepend('<a href="#" class="back-to-top">Na vrh</a>');
+
+  var amountScrolled = 300;
+
+  $(window).scroll(function() {
+    if ( $(window).scrollTop() > amountScrolled ) {
+      $('a.back-to-top').fadeIn('slow');
+    } else {
+      $('a.back-to-top').fadeOut('slow');
+    }
+  });
+
+  $('a.back-to-top').click(function() {
+    $('html, body').animate({
+      scrollTop: 0
+    }, 800);
+    return false;
+  });
+</script>
 
 </body>
 
