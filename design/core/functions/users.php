@@ -1,5 +1,24 @@
 <?php
 
+	function activate($email, $email_koda) {
+
+		$email = mysqli_real_escape_string(mysqli_connect('localhost', 'root', 'password', 'znamke_db'), $email);
+		$email_koda = mysqli_real_escape_string(mysqli_connect('localhost', 'root', 'password', 'znamke_db'), $email_koda);
+
+		$query = "SELECT * FROM `uporabniki` WHERE `email` = '$email' AND `email_koda` = '$email_koda' AND `aktiviran` = 0";
+		$result = mysqli_query(mysqli_connect('localhost', 'root', 'password', 'znamke_db'), $query);
+
+		if ($result->num_rows) 
+		{
+			mysqli_query(mysqli_connect('localhost', 'root', 'password', 'znamke_db'), "UPDATE `uporabniki` SET `aktiviran` = 1 WHERE `email` = '$email'");
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
 	function register_user($register_data) {
 
 		array_walk($register_data, 'spucaj_array');
@@ -9,6 +28,8 @@
 		$data = '\'' . implode('\', \'', $register_data) . '\'';
 
 		mysqli_query(mysqli_connect('localhost', 'root', 'password', 'znamke_db'), "INSERT INTO `uporabniki` ($fields) VALUES ($data)");
+
+		email($register_data['email'], 'Aktivacija računa', "Pozdravljen " . $register_data['ime'] . ", \n\n za aktivacijo računa klikni na spodnji naslov: \n\n http://localhost:8888/znamkeGithub/aktivacija.php?email=" . $register_data['email'] . "&email_koda=" . $register_data['email_koda'] . " \n\n - menjavanje znamk - ");
 	}
 
 	function update_user($update_data) {
