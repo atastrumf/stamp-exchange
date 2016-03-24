@@ -1,6 +1,7 @@
 <?php
 session_start();
 ob_start();
+error_reporting(0);
 
 require 'database/connect.php';
 require 'functions/general.php';
