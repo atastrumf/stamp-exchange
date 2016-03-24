@@ -6,6 +6,7 @@
 	<nav>
 		<ul>
 			<li><a href="index.php">Znamke</a></li>
+			<li><a href="album.php">Moj album</a></li>
 			<li><a href="menjavanje.php">Menjavanje</a></li>
 			<li><a href="statistika.php">Statistika</a></li>
 			<li><a href="mojprofil.php">Moj profil</a></li>
