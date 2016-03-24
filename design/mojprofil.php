@@ -155,6 +155,7 @@
 					title:"Vaša lokacija"
 				});
 
+				setInputs(pos.lat, pos.lng);
 				// catch that user moved marker
 				google.maps.event.addListener(marker, 'dragend', function(event) {
 					setInputs(event.latLng.lat(), event.latLng.lng());
