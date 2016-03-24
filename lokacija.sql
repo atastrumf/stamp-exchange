@@ -1,0 +1,1 @@
+ALTER TABLE `uporabniki` ADD `lokacija` POINT NULL AFTER `aktiviran`;

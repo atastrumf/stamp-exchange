@@ -23,7 +23,8 @@
 			. "posta='" . $update_data['posta'] . "', "
 			. "telefonska='" . $update_data['telefonska'] . "', "
 			. "spol='" . $update_data['spol'] . "', "
-			. "starost='" . $update_data['starost'] . "'"
+			. "starost='" . $update_data['starost'] . "', "
+			. "lokacija=GeomFromText('POINT(" . $update_data['lat'] . " "  . $update_data['lng'] . ")') "
 			. "WHERE uporabnisko_ime='" . $update_data['uporabnisko_ime'] . "'");
 	}
 
@@ -43,7 +44,7 @@
 
 			$fields = '`' . implode('`, `', $func_get_args) . '`';
 
-			$query = "SELECT $fields FROM `uporabniki` WHERE `uporabnikID` = $user_id";
+			$query = "SELECT $fields , X(`lokacija`) as latitude, Y(`lokacija`) as longitude FROM `uporabniki` WHERE `uporabnikID` = $user_id";
 			$result = mysqli_query(mysqli_connect('localhost', 'root', 'password', 'znamke_db'), $query);
 			$data = mysqli_fetch_assoc($result);
 
