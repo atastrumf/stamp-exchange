@@ -140,3 +140,35 @@ a.back-to-top {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 	padding-left: 6px;
 }
+
+
+
+
+
+
+#chatwindow{
+    position:relative;
+    height:400px;
+}
+#messagewindow, #inputcontainer{
+    position:absolute;
+    left:0;
+    right:0;
+    border:1px solid #000;
+}
+#messagewindow{   
+    overflow:auto;
+    top:0;
+    bottom:1em;
+}
+#inputcontainer{
+    display:block;
+    bottom:0;
+    height:1em;
+    padding:.5em;
+    margin-top:1em;
+}
+
+#inputcontainer > p{
+    margin:0;
+}
