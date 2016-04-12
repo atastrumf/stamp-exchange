@@ -5,7 +5,7 @@
 	
 	if (empty($_POST) === false) {
 	
-		$required_fields = array('username', 'password', 'confirmpassword', 'email');
+		$required_fields = array('username', 'password', 'confirmpassword', 'email', 'firstname');
 
 		foreach ($_POST as $key => $value) {
 			
@@ -142,7 +142,7 @@
 					<?php 
 
 						if (isset($_GET['success']) && empty($_GET['success'])) {
-							echo "Uspešno si se registriral!";
+							echo "Uspešno si se registriral! Preveri email, da aktiviraš svoj račun!";
 						} else {
 
 							if (empty($_POST) === false && empty($errors) === true) {
@@ -150,6 +150,7 @@
 								'uporabnisko_ime' 	=> $_POST['username'],
 								'geslo' 	=> $_POST['password'],
 								'email' 	=> $_POST['email'],
+								'email_koda'=> md5($_POST['username'] + microtime()),
 								'ime' 		=> $_POST['firstname'],
 								'priimek' 	=> $_POST['lastname'],
 								'naslov' 	=> $_POST['address'],
@@ -194,7 +195,7 @@
 						</tr>
 						<tr>
 							<td>
-								<h6>Ime: </h6><input type="text" name="firstname" class="StyleTxtField">
+								<h6>Ime: *</h6><input type="text" name="firstname" class="StyleTxtField">
 							</td>
 							<td>
 								<h6>Priimek: </h6><input type="text" name="lastname" class="StyleTxtField">

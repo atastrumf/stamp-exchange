@@ -16,7 +16,6 @@
 
 				<?php
 					if (logged_in()) {
-
 							if (empty($_POST) === false && empty($errors) === true) {
 							$update_data = array(
 								'uporabnisko_ime' => $_POST['username'],
@@ -31,10 +30,8 @@
 								'lng'		=> $_POST['longitude'],
 								'lat'		=> $_POST['latitude']
 							);
-
 							update_user($update_data);
 							$user_data = common_user_data($session_user_id);
-
 							} else if (empty($errors) === false){
 								echo output_errors($errors);
 							}
@@ -108,10 +105,8 @@
 			<div id="ContentRight">
 				<?php
 					if (logged_in() === true) {
-
 						include 'widgets/loggedin.php';
 					} else {
-
 						include 'widgets/login.php';
 					}
 				?>
@@ -126,14 +121,12 @@
 		// prompted by your browser. If you see the error "The Geolocation service
 		// failed.", it means you probably did not give permission for the browser to
 		// locate you.
-
 		function initMap() {
 			var map = new google.maps.Map(document.getElementById('map'), {
 			  center: {lat: -34.397, lng: 150.644},
 			  zoom: 6
 			});
 			var infoWindow = new google.maps.InfoWindow({map: map});
-
 			// Try HTML5 geolocation.
 			if (navigator.geolocation) {
 			  navigator.geolocation.getCurrentPosition(function(position) {
@@ -141,11 +134,9 @@
 			      lat: <?php if (isset($user_data['latitude'])) {echo $user_data['latitude'];} else {echo "position.coords.latitude";} ?>,
 			      lng: <?php if (isset($user_data['longitude'])) {echo $user_data['longitude'];} else {echo "position.coords.longitude";} ?>
 			    };
-
 			    //infoWindow.setPosition(pos);
 			    //infoWindow.setContent('Location found.');
 			    map.setCenter(pos);
-
 			    // add marker
 				marker = new google.maps.Marker({
 					position: pos,
@@ -154,13 +145,11 @@
 					animation: google.maps.Animation.DROP,
 					title:"Vaša lokacija"
 				});
-
 				setInputs(pos.lat, pos.lng);
 				// catch that user moved marker
 				google.maps.event.addListener(marker, 'dragend', function(event) {
 					setInputs(event.latLng.lat(), event.latLng.lng());
 				});
-
 			  }, function() {
 			    handleLocationError(true, infoWindow, map.getCenter());
 			  });
@@ -169,13 +158,11 @@
 			  handleLocationError(false, infoWindow, map.getCenter());
 			}
 		}
-
       	function setInputs(latitude, longitude)
 		{
 			$("#latitudeInput").val(latitude);
 			$("#longitudeInput").val(longitude);
 		}
-
 		function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 			infoWindow.setPosition(pos);
 			infoWindow.setContent(browserHasGeolocation ?

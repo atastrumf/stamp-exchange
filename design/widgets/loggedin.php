@@ -1,4 +1,6 @@
-<h1>Pozdravljen, <?php echo $user_data['ime']; ?>!</h1>
+<h1>
+	Pozdravljen/a, <?php echo $user_data['ime'];?>!
+</h1>
 <table>
 	<tr>
 		<td>

@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset='UTF-8'> 
-</head>
 <?php 
 	include 'core/init.php';
 	include 'core/database/connect.php';
+	include 'head.php';
 ?>
 
 <body>
@@ -35,7 +33,7 @@
 				</div>				
 					
 				
-				<table>	
+				<table id="znamkaPodrobnosti">	
 					<?php 
 					
 					if (isset($row['slika']) && $row['slika'] != NULL)

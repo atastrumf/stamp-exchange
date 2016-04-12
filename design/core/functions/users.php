@@ -33,9 +33,7 @@
 	}
 
 	function update_user($update_data) {
-
 		array_walk($update_data, 'spucaj_array');
-
 		mysqli_query(mysqli_connect('localhost', 'root', 'password', 'znamke_db'), "UPDATE `uporabniki` SET "
 			. "email='" . $update_data['email'] . "', "
 			. "ime='" . $update_data['ime'] . "', "
@@ -53,6 +51,7 @@
 		return user_data($session_user_id, 'uporabnikID', 'uporabnisko_ime', 'geslo', 'email', 'ime', 'priimek', 'naslov', 'posta', 'telefonska', 'spol', 'starost');
 	}
 
+
 	function user_data($user_id) {
 		$data = array();
 		$user_id = (int)$user_id;
@@ -65,17 +64,17 @@
 
 			$fields = '`' . implode('`, `', $func_get_args) . '`';
 
+			//$query = "SELECT $fields FROM `uporabniki` WHERE `uporabnikID` = $user_id";
 			$query = "SELECT $fields , X(`lokacija`) as latitude, Y(`lokacija`) as longitude FROM `uporabniki` WHERE `uporabnikID` = $user_id";
 			$result = mysqli_query(mysqli_connect('localhost', 'root', 'password', 'znamke_db'), $query);
-			$data = mysqli_fetch_assoc($result);
+			//$data = mysqli_fetch_assoc($result);
 
-			echo mysqli_fetch_assoc($result);
-
-			return $data;
+			return $result->fetch_assoc();
 		}
 	}
 
 	function logged_in() {
+		
 		return (isset($_SESSION['user_id'])) ? true : false;
 	}
 
