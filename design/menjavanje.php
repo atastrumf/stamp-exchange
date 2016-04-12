@@ -23,6 +23,9 @@
 						<h1>Pogovarjate se z uporabnikom: <?php echo $otherUser['uporabnisko_ime']; ?></h1>
 						<div id="chatwindow">
 						 <div id="messagewindow">
+						 	<p>Sistem: Pozdravljeni!
+Uporabnik <?php echo $user_data['uporabnisko_ime']; ?> bi rad pridobil znamko "<?php echo urldecode($_GET['title']); ?>".
+Dogovorita se spodaj!</p>
 						    <p><?php echo $user_data['uporabnisko_ime']; ?>: Zdravo, bi bil zainteresiran za menjavo?</p>
 						    <p><?php echo $otherUser['uporabnisko_ime']; ?>: Seveda, imam tako prevec teh znamk.</p>
 						    <p><?php echo $user_data['uporabnisko_ime']; ?>: Super!</p>
@@ -49,7 +52,7 @@
 							while($row = $result->fetch_assoc()) {
 								//var_dump($row);
 								echo "<hr>";
-								echo '<div class="menjava-row"><a href="menjavanje.php?id=' . $_GET['id'] . '&withUser=' . $row['userID'] . '">';
+								echo '<div class="menjava-row"><a href="menjavanje.php?id=' . $_GET['id'] . '&withUser=' . $row['userID'] . '&title=' . $_GET['title'] . '">';
 								echo "<span>";
 								echo $row['uporabnisko_ime'];
 								echo "</span>";

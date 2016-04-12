@@ -122,7 +122,7 @@
 								echo "<div class = 'kolicina' id='kolicina". $row['ID_slika'] ."'>0</div>";
 							}
 							
-							echo "<a id='plus' class='urediAlbum'>+</a> <a id='minus' class='urediAlbum'>-</a> <a href='menjavanje.php?id=" . $row['ID_slika'] . "'>Isci</a>							
+							echo "<a id='plus' class='urediAlbum'>+</a> <a id='minus' class='urediAlbum'>-</a> <a href='menjavanje.php?id=" . $row['ID_slika'] . "&title=" . urlencode($row['naziv']) . "'>Isci</a>							
 							</td>";
 							$i++;
 						}
