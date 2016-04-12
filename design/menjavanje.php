@@ -12,16 +12,29 @@
 			<div id="ContentLeft">
 				<div id="PageHeading">
 				
-				<h1>Menjavanje</h1>
+				<h1>Zbiratelji, s katerimi lahko zamenjate največ</h1>
 
 				<?php
 					if (logged_in() === true && isset($_GET['id'])) {
-						$query = "SELECT *, (GLength(LineStringFromWKB(LineString(lokacija, GeomFromText('POINT(" . $user_data['latitude'] . " " . $user_data['longitude'] . ")'))))) AS distance FROM album, uporabniki WHERE znamkaID= ".$_GET['id'] . " AND userID!=" . $session_user_id . " AND kolicina > 1 AND album.userID = uporabniki.uporabnikID ORDER BY distance ASC";
+						$query = "SELECT *, 111.045*DEGREES(ACOS(COS(RADIANS(X(lokacija))) * COS(RADIANS(" . $user_data['latitude'] . ")) *
+             COS(RADIANS(Y(lokacija)) - RADIANS(" . $user_data['longitude'] . ")) +
+             SIN(RADIANS(X(lokacija))) * SIN(RADIANS(" . $user_data['latitude'] . ")))) AS distance FROM album, uporabniki WHERE znamkaID= ".$_GET['id'] . " AND userID!=" . $session_user_id . " AND kolicina > 1 AND album.userID = uporabniki.uporabnikID ORDER BY distance ASC";
 
 						$result = $con->query($query);
 						if ($result->num_rows > 0) {
 							while($row = $result->fetch_assoc()) {
-								echo $row['uporabnisko_ime'] . "<br>"; // . ", razdalja: " . $row['distance'] . "<br>";
+								//var_dump($row);
+								echo "<hr>";
+								echo '<div class="menjava-row">';
+								echo "<span>";
+								echo $row['uporabnisko_ime'];
+								echo "</span>";
+								echo '<span style="color: gray;">';
+								echo " (" . round($row['distance']) . " km)";
+								echo "</span>";
+								echo "<br>";
+								echo '<span style="color: gray;">Uporabnik ima za menjavo na voljo <span style="weight: bold;">' . (intval($row['kolicina']) - 1) . '</span> znamk.</span>';
+								echo '</div>';
 							}
 						}
 					}
