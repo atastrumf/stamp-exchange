@@ -121,10 +121,15 @@ a.back-to-top {
 	z-index: 999;
 	right: 20px;
 	bottom: 20px;
-	background: #efc74b url("arrow-up-01-128.png") no-repeat center 23%;
+	background: #efc74b url("arrow-up-01-128.png") no-repeat center 50%;
 	-webkit-border-radius: 30px;
 	-moz-border-radius: 30px;
 	border-radius: 30px;
+}
+
+.znamke td {
+
+	text-align: center;
 }
 
 .StyleTxtField {

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset='UTF-8'> 
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="google-signin-client_id" content="znamke-1253">	
 	<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js'></script>
 	<script>
@@ -65,7 +65,7 @@
 					
 				<tr><td class='meni'>
 				<form method='POST' action='album.php' name='leto' id='leto'>
-				<br><select 'width='200px' form='leto' name='izbiraLeta'>";
+				<br><select width='200px' form='leto' name='izbiraLeta'>";
 				<?php
 				for ($i = 1991; $i < 2017; $i++) {	
 					if (isset($_POST["izbiraLeta"]) && $i == $_POST["izbiraLeta"])					
@@ -122,7 +122,7 @@
 								echo "<div class = 'kolicina' id='kolicina". $row['ID_slika'] ."'>0</div>";
 							}
 							
-							echo "<a id='plus' class='urediAlbum'>+</a> <a id='minus' class='urediAlbum'>-</a> <a href='menjavanje.php?id=" . $row['ID_slika'] . "'>Isci</a>							
+							echo "<a id='plus' class='urediAlbum'><img src='plus.png' alt='Dodaj znamko' height='20' width='20'></img></a> <a id='minus' class='urediAlbum'><img src='minus.png' alt='Odstrani znamko' height='21' width='21'></img></a> <br><a href='menjavanje.php?id=" . $row['ID_slika'] . "'>Išči</a>
 							</td>";
 							$i++;
 						}

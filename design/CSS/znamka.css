@@ -16,14 +16,21 @@
 	border: 5px solid;
 	margin: 10px;
 	
-    opacity: 0.4;
-    filter: alpha(opacity=40); /* msie */
+    opacity: 0.2;
+    filter: alpha(opacity=20); /* msie */
 }	
 
-.znamkaPodrobno {
+#znamkaPodrobnosti {
+	padding: 11px;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
 #znamkaSeznam {
 	vertical-align: baseline;
+	text-align: center;
+	border-style: dotted;
+	border-color: #c0c0c0;
+	border-width: 2px;
+
 }
 	
