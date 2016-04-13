@@ -46,7 +46,7 @@
 					if (isset($polja[$i]) && $polja[$i] != NULL) {
 						echo "
 							<tr>
-							<td>".$poljaText[$i].":</td>
+							<td class='poljatekst'>".$poljaText[$i].":</td>
 							<td>".$polja[$i]."</td>
 						</tr>";
 						}

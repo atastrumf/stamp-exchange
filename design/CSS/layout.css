@@ -23,6 +23,7 @@ header {
 
 #PageHeading {
 	height: auto;
+	padding: 11px;
 }
 
 #Letnice {
@@ -141,14 +142,72 @@ a.back-to-top {
 	padding-left: 6px;
 }
 
+.StyleTxtField2 {
+	border: 1px solid #666;
+	border-radius: 6px;
+	width: 100px;
+	height: 35px;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	padding-left: 6px;
+	text-indent: 20px;
+}
 
+.StyleTxtField3 {
+	border: 1px solid #666;
+	border-radius: 6px;
+	width: 100px;
+	height: 35px;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	padding-left: 6px;
+}
 
+.menjavatext {
+	border: 1px solid #666;
+	border-radius: 6px;
+	width: 300px;
+	height: 35px;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
 
+.menjavagumb {
+	border: 1px solid #666;
+	border-radius: 6px;
+	width: auto;
+	height: 35px;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+#dosezki {
+
+	padding-left: 11px;
+}
+
+#dosezki tr td {
+
+	border-style: dotted;
+	border-width: 2px;
+	border-color: #c0c0c0;
+	text-align: center;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-style: italic;
+	font-size: 20px;
+
+	width: 230px;
+	height: 230px;
+}
+
+.dosezekManjka {
+
+	opacity: 0.3;
+    filter: alpha(opacity=30);
+}
 
 
 #chatwindow{
     position:relative;
     height:400px;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    padding: 11px;
 }
 #messagewindow, #inputcontainer{
     position:absolute;
@@ -160,7 +219,22 @@ a.back-to-top {
     overflow:auto;
     top:0;
     bottom:1em;
+    padding: 11px;
+    padding-top: 0;
 }
+
+.sistem {   
+    overflow:auto;
+    top:0;
+    bottom:1em;
+    font-style: italic;
+}
+
+.menjava-row {
+
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
 #inputcontainer{
     display:block;
     bottom:0;

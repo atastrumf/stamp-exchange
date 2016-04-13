@@ -11,10 +11,9 @@
 			<?php
 				if (logged_in()) { ?>
 					<li><a href="album.php">Moj album</a></li>
-					<li><a href="menjavanje.php">Menjavanje</a></li>
 					<li><a href="statistika.php">Statistika</a></li>
-					<li><a href="mojprofil.php">Moj profil</a></li>
 					<li><a href="dosezki.php">Dosežki</a></li>
+					<li><a href="mojprofil.php">Moj profil</a></li>
 					<li><a href="logout.php">Odjavi se</a></li>
 				<?php }
 			?>

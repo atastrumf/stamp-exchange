@@ -61,11 +61,10 @@
 				
 				<h1>Moje znamke</h1>			
 
-				</div>				
-					
+				</div>
 				<tr><td class='meni'>
 				<form method='POST' action='album.php' name='leto' id='leto'>
-				<br><select width='200px' form='leto' name='izbiraLeta'>";
+				<br><select width='200px' form='leto' name='izbiraLeta' class="StyleTxtField2">";
 				<?php
 				for ($i = 1991; $i < 2017; $i++) {	
 					if (isset($_POST["izbiraLeta"]) && $i == $_POST["izbiraLeta"])					
@@ -74,7 +73,7 @@
 						echo "<option value=".$i.">".$i."</option>";
 				}
 				?>
-				<input id='button' type='submit' name='submit' value='Izberi'></select></td></tr><br>
+				<input id='button' class="StyleTxtField3" type='submit' name='submit' value='IZBERI'></select></td></tr><br>
 				
 				<?php
 				$userID = $_SESSION['user_id'];
@@ -130,7 +129,9 @@
 						$result->free();
 						$con->close();
 						echo "</tr></table>";
+
 					}
+
 				}
 				?>
 			</div>

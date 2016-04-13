@@ -57,7 +57,7 @@
 		                $j = 0;
 		              }
 		                
-		              echo "<td id='znamkaSeznam'>
+		              echo "<td id='ZnamkaSeznam'>
 		              <a href='znamka.php?ID_slika=" . $row['ID_slika'] . "'>
 		              <img class='malaznamka' src='data:image/jpeg;base64,".base64_encode( $row['slika'] )."'/>
 		              </a>

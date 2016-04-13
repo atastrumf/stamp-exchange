@@ -23,19 +23,25 @@
 						<h1>Pogovarjate se z uporabnikom: <?php echo $otherUser['uporabnisko_ime']; ?></h1>
 						<div id="chatwindow">
 						 <div id="messagewindow">
-						 	<p>Sistem: Pozdravljeni!
+						 	<p class="sistem">Sistem: Pozdravljeni!
 Uporabnik <?php echo $user_data['uporabnisko_ime']; ?> bi rad pridobil znamko "<?php echo urldecode($_GET['title']); ?>".
 Dogovorita se spodaj!</p>
-						    <p><?php echo $user_data['uporabnisko_ime']; ?>: Zdravo, bi bil zainteresiran za menjavo?</p>
+						    <!--
+						    <p><?php echo $user_data['uporabnisko_ime']; ?>: Zdravo, bi bila zainteresirana za menjavo?</p>
+						    -->
+						    <!--
 						    <p><?php echo $otherUser['uporabnisko_ime']; ?>: Seveda, imam tako prevec teh znamk.</p>
+						    -->
+						    <!--
 						    <p><?php echo $user_data['uporabnisko_ime']; ?>: Super!</p>
+						    -->
 						 </div>
 						</div>
      
 						<form name="message" action="index.php">
-						    <input name="usermsg" type="text" id="usermsg" size="63" />
-						    <input name="submitmsg" type="submit"  id="submitmsg" value="Pošlji" />
-						    <input name="submitmsg" type="submit"  id="submitmsg" value="Zaključi menjavo" />
+						    <input name="usermsg" type="text" class="menjavagumb" id="usermsg" size="63" />
+						    <input name="submitmsg" type="submit" class="menjavagumb" id="submitmsg" value="Pošlji" />
+						    <input name="submitmsg" type="submit" class="menjavagumb" id="submitmsg" value="Zaključi menjavo" />
 						</form>
 					</div>
 				<?php

@@ -17,12 +17,20 @@
 	margin: 10px;
 	
     opacity: 0.2;
-    filter: alpha(opacity=20); /* msie */
-}	
+    filter: alpha(opacity=20);
+}
 
-#znamkaPodrobnosti {
+.poljatekst {
+
+	font-weight: bold;
+}
+
+#znamkaPodrobnosti tr td{
 	padding: 11px;
 	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	border-style: dotted;
+	border-color: #c0c0c0;
+	border-width: 2px;
 }
 
 #znamkaSeznam {
